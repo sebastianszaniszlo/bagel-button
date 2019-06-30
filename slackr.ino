@@ -4,11 +4,11 @@
 #include <ESP8266HTTPClient.h>
  
 // WiFi details
-const char *SSID = "YOUR_SSID"
-const char *PASSWORD = "YOUR_PASSWORD";
+const String SSID = "YOUR_SSID";
+const String PASSWORD = "YOUR_PASSWORD";
  
 // Web/Server address to read/write from 
-const char *HOST = "hooks.slack.com";
+const String HOST = "hooks.slack.com";
 const int HTTPS_PORT = 443;
  
 // SHA1 fingerprint of certificate
@@ -74,9 +74,11 @@ void setup () {
 
   if(retry_counter == MAX_RETRIES) {
     Serial.println("Connection failed");
+    digitalWrite(LED_BUILTIN, LOW);
   }
   else {
     Serial.println("Connected to web");
+    blink();
   }
 }
 
@@ -132,4 +134,16 @@ void post_message(WiFiClientSecure httpsClient) {
 
   posting = false;
   digitalWrite(LED_BUILTIN, HIGH);
+}
+
+void blink() {
+  int i = 3;
+
+  while (i > 0) {
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);
+    i--;
+  }
 }
