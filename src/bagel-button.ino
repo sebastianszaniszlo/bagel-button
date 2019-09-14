@@ -13,11 +13,11 @@ const int HTTPS_PORT = 443;
  
 // SHA1 fingerprint of certificate
 // Copy your Slack webhook in your browser, go to certificate and copy the fingerprint
-const char FINGERPRINT[] PROGMEM = "YOUR_FINGERPRINT";
+const char FINGERPRINT[] PROGMEM = "SSL_FINGERPRINT";
 
 // Slack details
 const String ROUTE = "YOUR_WEBHOOK";
-const String REQUEST_BODY = "{\"text\": \"<!channel> TEST\"}";
+const String REQUEST_BODY = "{\"text\": \"<!channel> Bagels\"}";
 const int CONTENT_LENGTH = REQUEST_BODY.length();
 const int MAX_RETRIES = 20;
 
